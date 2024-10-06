@@ -34,14 +34,6 @@ let generateQuote = async () => {
 }
 
 
-// let generateQuote = () => {
-//   fetch(url, options)
-//   .then((response) => response.json())
-//     .then((data) => {
-//     console.log(data[0].fact);
-//     fact.innerHTML = data[0].fact;  
-//     });
-// };
 
 button.addEventListener('click', generateQuote);
 
