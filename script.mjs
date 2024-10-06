@@ -1,39 +1,37 @@
 
+// const url = "https://api.thedogapi.com/v1/images/search?limit=10"
+
+// const url = `https://api.thedogapi.com/v1/images/search?limit=10&${breed_ids}=beng&api_key=api`
+
+// const api = `live_s1x3sj6JjCeyIG0l4zoGHjW3LOU90I4DfhT8jRh4UQqDHg1aJnMysCROeZVFnO2Y`
+
+const fact = document.getElementById('fact');
+
+let button = document.getElementById('generate-btn');
+
+const apiKey =`fspCEHpH8szOjg/OLOE3aQ==jICsqy0ebnfoNLkD`
 
 
-async function getDogData(breedid) {
-    const apiKey = 'api_key=live_s1x3sj6JjCeyIG0l4zoGHjW3LOU90I4DfhT8jRh4UQqDHg1aJnMysCROeZVFnO2Y'
-    const url =`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedid}&api_key=${apiKey}`;
-    try {
-  
-      const response = await fetch(url);
-    
-    if (!response.ok){
-        throw new Error ('error fetching data')
-    }
-    const data = await response.json();
-    console.log(response)
-    console.log(data)
+let options = {
+    method: "GET",
+    headers: {"x-api-key": apiKey},
+};
 
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  getDogData()
 
-  async function dataBreed(breedName, breedId) {
-    const breedInfo = document.getElementById(breedId);
+const url = `https://api.api-ninjas.com/v1/facts?`;
 
-    try {
 
-      const reponse = await getDogData(breedName);
-      if(reponse && data.length > 0){
-        const breed = data[0];
-      }
-      
-      return data;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      throw error; // Optionally re-throw the error to handle it further up the call stack
-    }
-  }
+let generateQuote = () => {
+  fetch(url, options)
+  .then((response) => response.json())
+    .then((data) => {
+    console.log(data[0].fact);
+    fact.innerHTML = data[0].fact;  
+    });
+};
+
+button.addEventListener('click', generateQuote);
+
+window.addEventListener('load', generateQuote);
+
+
