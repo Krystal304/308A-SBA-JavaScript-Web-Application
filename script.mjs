@@ -20,15 +20,28 @@ let options = {
 
 const url = `https://api.api-ninjas.com/v1/facts?`;
 
+let generateQuote = async () => {
+    try {
+        const response = await fetch(url,options);
+        const data = await response.json();
+        console.log(data[0].fact);
+        fact.innerHTML = data[0].fact;
+    
+    } catch (error) {
+        console.error(error);
+        
+    }
+}
 
-let generateQuote = () => {
-  fetch(url, options)
-  .then((response) => response.json())
-    .then((data) => {
-    console.log(data[0].fact);
-    fact.innerHTML = data[0].fact;  
-    });
-};
+
+// let generateQuote = () => {
+//   fetch(url, options)
+//   .then((response) => response.json())
+//     .then((data) => {
+//     console.log(data[0].fact);
+//     fact.innerHTML = data[0].fact;  
+//     });
+// };
 
 button.addEventListener('click', generateQuote);
 
